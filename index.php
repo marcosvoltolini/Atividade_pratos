@@ -1,8 +1,8 @@
 <?php
 
 include "infra/conexao.php";
-$livros = mysqli_query($conexao, "SELECT * FROM Pratos");
-
+$Pratos = mysqli_query($conexao, "SELECT * FROM Pratos");
+$Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,10 @@ $livros = mysqli_query($conexao, "SELECT * FROM Pratos");
 </head>
 
 <body>
+
+
+</form>
+
     <header>
         <h1>Atividade_Pratos</h1>
     </header>
@@ -34,7 +38,7 @@ $livros = mysqli_query($conexao, "SELECT * FROM Pratos");
             <label for="preco">Preço:</label>
             <input type="number" name="preco">
             <br>
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Cadastrar Prato</button>
         </form>
         <div>
             <h2>Pratos Cadastrados</h2>
@@ -55,8 +59,8 @@ $livros = mysqli_query($conexao, "SELECT * FROM Pratos");
                         <td><?php echo $Pratos["categoria"] ?></td>
                         <td><?php echo $Pratos["preco"] ?></td>
                         <td>
-                            <a href="public/editar.php?id=<?php echo $livro["id"] ?>">Editar</a>
-                            <a href="public/excluir.php?id=<?php echo $livro["id"] ?>">Excluir</a>
+                            <a href="public/editar.php?id=<?php echo $Pratos["id"] ?>">Editar</a>
+                            <a href="public/excluir.php?id=<?php echo $Pratos["id"] ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
