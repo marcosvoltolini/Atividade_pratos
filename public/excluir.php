@@ -2,7 +2,7 @@
 include "../infra/conexao.php";
 $id = $_GET["id"];
 //pega o valor do id através do do método GET.
-$sql = "DELETE FROM livros WHERE id= ?";
+$sql = "DELETE FROM Pratos WHERE id= ?";
 //Aqui deleto os livros de onde pedir o id.
 $stmt = mysqli_prepare($conexao, $sql);
 //Prepara o comando SQL para ser executado com segurança.
