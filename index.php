@@ -17,6 +17,18 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 
 <body>
 
+<h2>Cadastre um novo usuário</h2>
+<form action="public/cadastrar_usuario.php"> method="POST"
+
+<label>Nome:</label>
+<input type="text"> name="nome_usuario" required>
+<br>
+
+<label>Email:</label>
+<input type="text"> name="email" required>
+<br>
+
+ <button type="submit">Cadastrar Prato</button>
 
 </form>
 
