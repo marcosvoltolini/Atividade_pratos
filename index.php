@@ -3,6 +3,7 @@
 include "infra/conexao.php";
 $Pratos = mysqli_query($conexao, "SELECT * FROM Pratos");
 $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
+$ResuPratos = mysqli_query($conexao, "SELECT * FROM Pratos");
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
         <h1>Atividade_Pratos</h1>
     </header>
     <main>
-        
+
 <h2>Cadastre um novo usuário</h2>
 <form action="public/cadastrar_usuario.php" method="POST">
 
@@ -38,21 +39,29 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 
     
         <h2>Adicione um novo Prato!</h2>
-        <form action="public/cadastrar.php" method="POST">
-            <label for="prato">Nome do prato:</label>
-            <input type="text" name="prato">
-            <br>
-            <label for="Descri">Descrição:</label>
-            <input type="text" name="descri">
-            <br>
-            <label for="categoria">Categoria:</label>
-            <input type="text" name="categoria">
-            <br>
-            <label for="preco">Preço:</label>
-            <input type="number" name="preco">
-            <br>
-            <button type="submit">Cadastrar Prato</button>
-        </form>
+        <form action="public/cadastrar_prato.php" method="POST">
+    <label for="prato">Nome do prato:</label>
+    <input type="text" name="nome_prato" required>
+    <br>
+    <label for="Descri">Descrição:</label>
+    <input type="text" name="descri" required>
+    <br>
+    <label for="categoria">Categoria:</label>
+    <input type="text" name="categoria" required>
+    <br>
+    <label for="preco">Preço:</label>
+    <input type="number" step="0.01" name="preco" required>
+    <br>
+    <label for="nome_usuario">Cadastrado por:</label>
+    <select name="nome_usuario" required>
+        <option value="">Selecione um usuário</option>
+        <?php while ($u = mysqli_fetch_assoc($Usuarios)) { ?>
+            <option value="<?php echo $u["nome"]; ?>"><?php echo $u["nome"]; ?></option>
+        <?php } ?>
+    </select>
+    <br>
+    <button type="submit">Cadastrar Prato</button>
+</form>
         <div>
             <h2>Pratos Cadastrados</h2>
             <table>
@@ -64,11 +73,11 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
                     <th>Preço</th>
                     <th>Ações</th>
                 </tr>
-                <?php while ($Pratos = mysqli_fetch_assoc($Pratos)) { ?>
+                <?php while ($Pratos = mysqli_fetch_assoc($ResuPratos)) { ?>
                     <tr>
                         <td><?php echo $Pratos["id"] ?></td>
                         <td><?php echo $Pratos["nome"] ?></td>
-                        <td><?php echo $Pratos["descri"] ?></td>
+                        <td><?php echo $Pratos["descricao"] ?></td>
                         <td><?php echo $Pratos["categoria"] ?></td>
                         <td><?php echo $Pratos["preco"] ?></td>
                         <td>
