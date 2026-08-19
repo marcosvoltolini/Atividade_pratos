@@ -15,7 +15,7 @@ if (isset($_POST["id"])) {
             WHERE id = $id";
 
     if (mysqli_query($conexao, $sql)) {
-        echo "Prato atualizado com sucesso! <a href='listar_pratos.php'>Ver pratos</a>";
+        echo "Prato atualizado com sucesso! <a href='listar.php'>Ver pratos</a>";
     } else {
         echo "Erro ao atualizar: " . mysqli_error($conexao);
     }
@@ -72,7 +72,7 @@ $usuarios = mysqli_query($conexao, $sql_usuarios);
     <button type="submit">Salvar alterações</button>
 </form>
 
-<a href="listar_pratos.php">Voltar</a>
+<a href="listar.php">Voltar</a>
 
 </body>
 </html>
