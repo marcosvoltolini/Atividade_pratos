@@ -28,7 +28,7 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 <input type="text"> name="email" required>
 <br>
 
- <button type="submit">Cadastrar Prato</button>
+ <button type="submit">Cadastrar usuario</button>
 
 </form>
 
