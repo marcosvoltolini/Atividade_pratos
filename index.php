@@ -16,7 +16,11 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 </head>
 
 <body>
-
+<header>
+        <h1>Atividade_Pratos</h1>
+    </header>
+    <main>
+        
 <h2>Cadastre um novo usuário</h2>
 <form action="public/cadastrar_usuario.php" method="POST">
 
@@ -32,10 +36,7 @@ $Usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 
 </form>
 
-    <header>
-        <h1>Atividade_Pratos</h1>
-    </header>
-    <main>
+    
         <h2>Adicione um novo Prato!</h2>
         <form action="public/cadastrar.php" method="POST">
             <label for="prato">Nome do prato:</label>
