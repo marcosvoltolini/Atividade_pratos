@@ -1,16 +1,17 @@
 <?php
-require "conexao.php";
+require "../infra/conexao.php";
 
 if (isset($_POST["id"])) {
 
     $id          = $_POST["id"];
     $nome        = $_POST["nome"];
     $descricao   = $_POST["descricao"];
+    $categoria = $_POST["categoria"];
     $preco       = $_POST["preco"];
     $usuario_id  = $_POST["usuario_id"];
 
     $sql = "UPDATE pratos
-            SET nome = '$nome', descricao = '$descricao', preco = '$preco', usuario_id = '$usuario_id'
+            SET nome = '$nome', descricao = '$descricao', categoria = '$categoria', preco = '$preco', usuario_id = '$usuario_id'
             WHERE id = $id";
 
     if (mysqli_query($conexao, $sql)) {
@@ -42,7 +43,7 @@ $usuarios = mysqli_query($conexao, $sql_usuarios);
 
 <h1>Editar Prato</h1>
 
-<form method="POST" action="editar_prato.php">
+<form method="POST" action="editar.php">
 
     <input type="hidden" name="id" value="<?php echo $prato["id"]; ?>">
 
@@ -51,6 +52,9 @@ $usuarios = mysqli_query($conexao, $sql_usuarios);
 
     Descrição: <br>
     <textarea name="descricao"><?php echo $prato["descricao"]; ?></textarea><br><br>
+
+    Categoria: <br>
+    <input type="text" name="categoria" value="<?php echo $prato["categoria"]; ?>" required><br><br>
 
     Preço: <br>
     <input type="number" step="0.01" name="preco" value="<?php echo $prato["preco"]; ?>" required><br><br>

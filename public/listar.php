@@ -1,8 +1,8 @@
 <?php
-require "conexao.php";
+require "../infra/conexao.php";
 
 
-$sql = "SELECT pratos.id, pratos.nome, pratos.descricao, pratos.preco, usuarios.nome AS nome_usuario
+$sql = "SELECT pratos.id, pratos.nome, pratos.descricao, pratos.categoria, pratos.preco, usuarios.nome AS nome_usuario
         FROM pratos
         INNER JOIN usuarios ON pratos.usuario_id = usuarios.id";
 
@@ -27,6 +27,7 @@ $resultado = mysqli_query($conexao, $sql);
         <th>ID</th>
         <th>Nome</th>
         <th>Descrição</th>
+        <th>Categoria</th>
         <th>Preço</th>
         <th>Cadastrado por</th>
         <th>Ações</th>
@@ -37,13 +38,14 @@ $resultado = mysqli_query($conexao, $sql);
             <td><?php echo $linha["id"]; ?></td>
             <td><?php echo $linha["nome"]; ?></td>
             <td><?php echo $linha["descricao"]; ?></td>
+            <td><?php echo $linha["categoria"]; ?></td>
             <td>R$ <?php echo number_format($linha["preco"], 2, ",", "."); ?></td>
             <td><?php echo $linha["nome_usuario"]; ?></td>
             <td>
-                <a href="editar_prato.php?id=<?php echo $linha["id"]; ?>">Editar</a>
-                |
-                <a href="excluir_prato.php?id=<?php echo $linha["id"]; ?>"
-                   onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                <a href="editar.php?id=<?php echo $linha["id"]; ?>">Editar</a>
+|
+                <a href="excluir.php?id=<?php echo $linha["id"]; ?>"
+                    onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
             </td>
         </tr>
     <?php } ?>
