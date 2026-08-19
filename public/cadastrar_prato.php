@@ -38,6 +38,15 @@ if ($stmt) {
         $descricao,
         $categoria,
         $preco,
-        
-    )
+
+    );
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
 }
+
+header("Location: ../index.php");
+exit();
+
+?>
