@@ -16,5 +16,5 @@ CREATE TABLE Pratos (
     nome VARCHAR (50) NOT NULL,
     email VARCHAR (100) NOT NULL
     
-    FOREIGN KEY usuario_id REFERENCES usuarios(id)
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
